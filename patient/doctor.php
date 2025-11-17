@@ -120,7 +120,7 @@ if ($result->num_rows > 0) {
         if(isset($_SESSION['patient_id'])) {
             echo '<div><a href="appointment_form.php?doctor_id='.$row['id'].'" class="book-btn">Book Appointment</a></div>';
         } else {
-            echo '<div><a href="login.php" class="book-btn">Book Appointment</a></div>';
+            echo '<div><a href="signup.php" class="book-btn">Book Appointment</a></div>';
         }
 
         echo '</div>';

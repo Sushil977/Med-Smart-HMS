@@ -2,7 +2,7 @@
 session_start();
 session_unset();
 session_destroy();
-header("Location:index.html");
+header("Location:admin_login.php");
 exit;
 ?>
 

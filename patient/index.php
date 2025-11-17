@@ -41,8 +41,21 @@
     .menu ul li:hover .dropdown-menu { display: block; }
     .menu ul li .dropdown-menu li a { color: #2c3e50; }
 
-    /* Image */
-    .hero-img { width: 100%; height: 500px; object-fit: cover; }
+    /* Hero Image */
+    .hero-img { 
+      width: 100%; 
+      height: 100vh; /* full viewport height */
+      object-fit: cover; /* cover entire area without stretching */
+      display: block; 
+    }
+
+    /* Optional: adjust marquee for hero image space */
+    marquee {
+      background-color: #f8f9fa;
+      padding: 10px;
+      font-weight: bold;
+      color: #333;
+    }
   </style>
 </head>
 
@@ -70,7 +83,6 @@
           <button class="dropdown-btn" style="background-color:#28a745;">Signup</button>
           <div class="dropdown-content">
             <a href="signup.php">Patient Signup</a>
-        
           </div>
         </div>
       <?php endif; ?>
@@ -104,7 +116,7 @@
   </div>
 
   <div>
-    <img src="image/hospital-building-outside-composition-vector.jpg" alt="Hospital" class="hero-img">
+    <img src="image/home.jpg" alt="Hospital" class="hero-img">
   </div>
 </body>
 </html>

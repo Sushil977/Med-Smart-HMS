@@ -15,10 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $sql = "INSERT INTO patients (name, email, password_hash, contact_number, age, gender, blood_group, created_at) VALUES ('$name','$email','$password','$contact',$age,'$gender','$blood', NOW())";
     if ($conn->query($sql)) {
-        $message = "Signup successful! You can now login.";
-    } else {
-        $message = "Error: " . $conn->error;
-    }
+    // Redirect to login page
+    header("Location: login.php");
+    exit();
+} else {
+    $message = "Error: " . $conn->error;
+}
+
 }
 ?>
 
@@ -49,7 +52,7 @@ p { color:red; text-align:center; }
     <input type="text" name="name" placeholder="Full Name" required>
     <input type="email" name="email" placeholder="Email" required>
     <input type="password" name="password" placeholder="Password" required>
-    <input type="text" name="contact" placeholder="Contact Number" required>
+    <input type="" name="contact" placeholder="Contact Number" required>
     <input type="number" name="age" placeholder="Age" required>
     <select name="gender" required>
         <option value="">Select Gender</option>
@@ -66,9 +69,9 @@ p { color:red; text-align:center; }
         <option value="AB+">AB+</option>
         <option value="AB-">AB-</option>
         <option value="O+">O+</option>
-        <option value="O-">O-</option>
+        <option value="O-">O+</option>
     </select>
-    <button type="submit">Signup</button>
+    <button type="submit"> <a href="login.php"></a>Signup</button>
   </form>
   <div class="switch">Already have an account? <a href="login.php">Login</a></div>
 </div>
