@@ -21,6 +21,7 @@ $result = $conn->query("SELECT * FROM doctors WHERE available='Yes' $dept_filter
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Doctors - MedSmart</title>
 <style>
+/* --- KEEP ALL YOUR EXISTING CSS UNCHANGED --- */
 body { font-family: Arial, sans-serif; margin:0; padding:0; }
 .top-header { background-color: #f8f9fa; padding: 15px 0; border-bottom: 1px solid #ddd; }
 .container { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; padding: 0 20px; }
@@ -41,8 +42,6 @@ body { font-family: Arial, sans-serif; margin:0; padding:0; }
 .doctor-card img { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 2px solid #007bff; margin-bottom: 10px; }
 .doctor-card .name { font-weight: bold; margin-bottom: 5px; color: #2a2a2a; }
 .doctor-card .details { font-size: 14px; color: #555; line-height: 1.4; }
-
-/* Menu Styles */
 .menu { background-color: #007bff; padding: 0; }
 .menu ul { list-style: none; margin: 0; padding: 0; display: flex; }
 .menu ul li { position: relative; }
@@ -53,6 +52,10 @@ body { font-family: Arial, sans-serif; margin:0; padding:0; }
 .menu ul li:hover .dropdown-menu { display: block; }
 .menu ul li .arrow { margin-left: 5px; font-size: 12px; }
 .dropdown-menu li a span { font-size: 20px; margin-right: 10px; }
+
+/* --- NEW: duty info --- */
+.doctor-card .duty { margin-top: 5px; font-size: 13px; color: #007bff; font-weight: 600; }
+
 </style>
 </head>
 <body>
@@ -115,6 +118,9 @@ if ($result->num_rows > 0) {
         echo '<img src="'.htmlspecialchars($imgPath).'" alt="Doctor">';
         echo '<div class="name">Dr. '.htmlspecialchars($row['name']).'</div>';
         echo '<div class="details">'.htmlspecialchars($row['specialization']).'<br>Experience: 5+ Years<br>Patients: 300+</div>';
+
+        // --- NEW: display duty date & time ---
+        echo '<div class="duty">Duty: '.htmlspecialchars($row['duty_date']).' | '.htmlspecialchars($row['duty_start']).' - '.htmlspecialchars($row['duty_end']).'</div>';
 
         // Only allow logged-in patients to book
         if(isset($_SESSION['patient_id'])) {
